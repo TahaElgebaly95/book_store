@@ -42,7 +42,6 @@ class AuthCubit extends Cubit<AuthState> {
       "password": passwordController.text,
       "password_confirmation": conPasswordController.text
     }).then((value) {
-      print(value.data);
       emit(RegisterSuccessState());
     }).catchError((error) {
       print(error);
@@ -75,7 +74,7 @@ class AuthCubit extends Cubit<AuthState> {
       if (error is DioException) {
         customShowToast(error.response?.data['message'] ?? 'Login Error');
       }
-      emit(LoginErrorState());
+      emit(LoginErrorState(error.response?.data['message'] ?? 'Error'));
       throw error;
     });
   }

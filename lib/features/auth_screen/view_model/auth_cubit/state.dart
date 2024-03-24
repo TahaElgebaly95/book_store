@@ -12,6 +12,9 @@ class RegisterLoadingState extends AuthState {}
 
 class LoginSuccessState extends AuthState {}
 
-class LoginErrorState extends AuthState {}
+class LoginErrorState extends AuthState {
+  late String error;
+  LoginErrorState(this.error);
+}
 
 class LoginLoadingState extends AuthState {}
