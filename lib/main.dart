@@ -18,8 +18,8 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await SharedHelper.init();
   await DioHelper.init();
-  //await SharedHelper.clear();
-  String? token = await SharedHelper.get(key: SharedKey.token);
+  await SharedHelper.clear();
+  // String? token = await SharedHelper.get(key: SharedKey.token);
   runApp(
     MultiBlocProvider(
       providers: [
