@@ -34,14 +34,29 @@ class AuthCubit extends Cubit<AuthState> {
     emit(ChangeObscureState());
   }
 
+  void reset() {
+    nameController.clear();
+    emilaController.clear();
+    passwordController.clear();
+    conPasswordController.clear();
+  }
+
   Future<void> register() async {
     emit(RegisterLoadingState());
-    await DioHelper.post(endpoint: EndPonits.register, withToken: true, body: {
+    await DioHelper.post(endpoint: EndPoints.register, withToken: true, body: {
       "name": nameController.text,
       "email": emilaController.text,
       "password": passwordController.text,
       "password_confirmation": conPasswordController.text
-    }).then((value) {
+    }).then((value) async {
+      await SharedHelper.set(
+          key: SharedKey.token, value: value.data['data']['token']);
+      await SharedHelper.set(
+          key: SharedKey.userID, value: value.data['data']['user']['id']);
+      await SharedHelper.set(
+          key: SharedKey.userEmail, value: value.data['data']['user']['email']);
+      await SharedHelper.set(
+          key: SharedKey.userName, value: value.data['data']['user']['name']);
       emit(RegisterSuccessState());
     }).catchError((error) {
       print(error);
@@ -55,7 +70,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> login() async {
     emit(LoginLoadingState());
-    await DioHelper.post(endpoint: EndPonits.login, withToken: true, body: {
+    await DioHelper.post(endpoint: EndPoints.login, body: {
       "email": emilaController.text,
       "password": passwordController.text
     }).then((value) async {
@@ -67,7 +82,7 @@ class AuthCubit extends Cubit<AuthState> {
           key: SharedKey.userEmail, value: value.data['data']['user']['email']);
       await SharedHelper.set(
           key: SharedKey.userName, value: value.data['data']['user']['name']);
-      print(value.data);
+      customShowToast(value.data['message']);
       emit(LoginSuccessState());
     }).catchError((error) {
       print(error.response?.data.toString());

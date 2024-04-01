@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Logo extends StatelessWidget {
   const Logo({super.key});
@@ -9,13 +10,13 @@ class Logo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Image.asset('assets/images/ktaby.png'),
-        const SizedBox(height: 40),
-        const Text(
+        SizedBox(height: 40.h),
+        Text(
           'Join Us!',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 30.sp,
             fontWeight: FontWeight.bold,
-            color: Color(0xff32AFB5),
+            color: const Color(0xff32AFB5),
           ),
         ),
       ],

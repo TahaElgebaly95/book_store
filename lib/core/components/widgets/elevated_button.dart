@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   CustomElevatedButton(
@@ -14,8 +15,8 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
-      width: 350,
+      height: 50.h,
+      width: 350.w,
       child: ElevatedButton(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         onPressed: onPressed,
@@ -24,7 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
         ),
         child: Text(
           nameOfButton,
-          style: const TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(color: Colors.white, fontSize: 20.sp),
         ),
       ),
     );

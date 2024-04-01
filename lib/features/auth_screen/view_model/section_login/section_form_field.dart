@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/components/widgets/elevated_button.dart';
 import '../../../../core/components/widgets/text_form_field_custom.dart';
 import '../../../../core/utils/colors.dart';
@@ -45,7 +46,7 @@ class SectionLogin extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextFormField(
                 controller: cubit.passwordController,
                 obscureText: cubit.obscure,
@@ -83,7 +84,7 @@ class SectionLogin extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomElevatedButton(
                 onPressed: () {
                   if (cubit.loginKey.currentState!.validate()) {

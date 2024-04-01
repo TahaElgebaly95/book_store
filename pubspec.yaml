@@ -46,6 +46,8 @@ dependencies:
   fluttertoast: ^8.2.4
   leak_tracker: ^10.0.0
   test_api: ^0.6.1
+  flutter_screenutil: ^5.9.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

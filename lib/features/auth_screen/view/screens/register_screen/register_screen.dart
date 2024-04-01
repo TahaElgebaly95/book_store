@@ -1,5 +1,7 @@
 import 'package:book_store/core/utils/colors.dart';
+import 'package:book_store/features/auth_screen/view/components/logo_login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../view_model/section_register/login_button.dart';
 import '../../../view_model/section_register/section_form_field.dart';
@@ -15,33 +17,22 @@ class RegisterScreen extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: ListView(
             children: [
-              const SizedBox(height: 40),
-              Column(
+              SizedBox(height: 40.h),
+              const Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Image.asset('assets/images/ktaby.png'),
-                  const SizedBox(height: 40),
-                  const Text(
-                    'Join Us!',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff32AFB5),
-                    ),
-                  ),
-                ],
+                children: [Logo()],
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: 40.h),
               const IfHaveAcc(),
               Container(
-                padding: const EdgeInsets.all(15),
+                padding: EdgeInsets.all(15.r),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.primaryColor, width: 2),
+                  border: Border.all(color: AppColors.primaryColor, width: 2.w),
                 ),
                 child: const SectionFormField(),
               ),
-              const SizedBox(height: 140),
+              SizedBox(height: 140.h),
             ],
           ),
         ),

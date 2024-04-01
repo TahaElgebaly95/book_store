@@ -8,6 +8,7 @@ import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart
 import 'package:book_store/features/home_screen/view/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../view_model/auth_cubit/state.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -18,19 +19,19 @@ class LoginScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(12.0.sp),
           child: ListView(
             children: [
-              const SizedBox(height: 40),
+              SizedBox(height: 40.h),
               const Logo(),
-              const SizedBox(height: 40),
+              SizedBox(height: 40.h),
               const RegisterButton(),
               Container(
-                padding: const EdgeInsets.all(15),
+                padding: EdgeInsets.all(15.sp),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     border:
-                        Border.all(color: AppColors.primaryColor, width: 2)),
+                        Border.all(color: AppColors.primaryColor, width: 2.w)),
                 child: BlocConsumer<AuthCubit, AuthState>(
                   builder: (context, state) {
                     var cubit = AuthCubit.get(context);
@@ -65,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                               return null;
                             },
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           CustomTextFormField(
                             controller: cubit.passwordController,
                             obscureText: cubit.obscure,
@@ -92,8 +93,8 @@ class LoginScreen extends StatelessWidget {
                                   ? Icons.visibility_off
                                   : Icons.visibility),
                             ),
-                            prefixIcon:
-                                const Icon(Icons.lock, color: AppColors.primaryColor),
+                            prefixIcon: const Icon(Icons.lock,
+                                color: AppColors.primaryColor),
                             hintText: 'Password',
                             labelText: 'Password',
                             validator: (value) {
@@ -106,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                               return null;
                             },
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           CustomElevatedButton(
                             onPressed: () {
                               if (cubit.loginKey.currentState!.validate()) {

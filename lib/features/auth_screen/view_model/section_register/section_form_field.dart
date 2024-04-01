@@ -1,6 +1,7 @@
 import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/components/widgets/elevated_button.dart';
 import '../../../../core/components/widgets/text_form_field_custom.dart';
 import '../../../../core/utils/colors.dart';
@@ -37,7 +38,7 @@ class SectionFormField extends StatelessWidget {
                   borderSide: BorderSide(color: AppColors.primaryColor),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextFormField(
                 controller: cubit.emilaController,
                 obscureText: false,
@@ -60,7 +61,7 @@ class SectionFormField extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextFormField(
                 controller: cubit.passwordController,
                 obscureText: true,
@@ -85,8 +86,23 @@ class SectionFormField extends StatelessWidget {
                     const Icon(Icons.lock, color: AppColors.primaryColor),
                 hintText: 'Password',
                 labelText: 'Password',
+                validator: (value) {
+                  if ((value ?? '').isEmpty) {
+                    return 'Enter your password';
+                  } else if (!RegExp(r'[A-Z]').hasMatch(value!)) {
+                    return 'Password should has at least one uppercase letter';
+                  } else if (!RegExp(r'[!@#\\$%^&*(),.?":{}|<>]')
+                      .hasMatch(value)) {
+                    return 'Password should has special character';
+                  } else if (!RegExp(r'[1-9]').hasMatch(value)) {
+                    return 'password should has one number at least';
+                  } else if ((value.length ?? 0) < 8) {
+                    return 'Password can\'t be less than 8 Characters';
+                  }
+                  return null;
+                },
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextFormField(
                 obscureText: true,
                 obscuringCharacter: '*',
@@ -100,8 +116,23 @@ class SectionFormField extends StatelessWidget {
                 hintText: 'Confirm Password',
                 labelText: 'Confirm Password',
                 controller: cubit.conPasswordController,
+                validator: (value) {
+                  if ((value ?? '').isEmpty) {
+                    return 'Enter your password';
+                  } else if (!RegExp(r'[A-Z]').hasMatch(value!)) {
+                    return 'Password should has at least one uppercase letter';
+                  } else if (!RegExp(r'[!@#\\$%^&*(),.?":{}|<>]')
+                      .hasMatch(value)) {
+                    return 'Password should has special character';
+                  } else if (!RegExp(r'[1-9]').hasMatch(value)) {
+                    return 'password should has one number at least';
+                  } else if ((value.length ?? 0) < 8) {
+                    return 'Password can\'t be less than 8 Characters';
+                  }
+                  return null;
+                },
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomElevatedButton(
                 onPressed: () {
                   if (cubit.registerKey.currentState!.validate()) {

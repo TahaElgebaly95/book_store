@@ -8,6 +8,16 @@ class DioHelper {
   static Dio? dio;
 
   static init() async {
+    dio = Dio(
+      BaseOptions(
+        baseUrl: EndPoints.baseUle,
+        receiveDataWhenStatusError: true,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      ),
+    );
     dio?.interceptors.add(PrettyDioLogger());
 // customization
     dio?.interceptors.add(PrettyDioLogger(
@@ -18,16 +28,6 @@ class DioHelper {
         error: true,
         compact: true,
         maxWidth: 90));
-    dio = Dio(
-      BaseOptions(
-        baseUrl: EndPonits.baseUle,
-        receiveDataWhenStatusError: true,
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-      ),
-    );
   }
 
   static Future<Response> getData({
