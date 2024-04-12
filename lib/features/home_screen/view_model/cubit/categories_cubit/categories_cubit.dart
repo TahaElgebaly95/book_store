@@ -28,13 +28,14 @@ class CategoriesCubit extends Cubit<CategoriesState> {
   List<ProductsDetails> productsList = [];
 
   Future<void> getProductsByCategories(int id) async {
+    productsList = [];
     emit(GetProductsByCategoriesLoading());
     await DioHelper.getData(endpoint: '${EndPoints.categories}/$id')
         .then((value) {
       for (var e in value.data['data']['products']) {
         productsList.add(ProductsDetails.fromJson(e));
-        emit(GetProductsByCategoriesSuccess());
       }
+      emit(GetProductsByCategoriesSuccess());
     }).catchError((error) {
       print(error.toString());
       emit(GetProductsByCategoriesError(error: error.toString()));

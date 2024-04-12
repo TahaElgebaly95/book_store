@@ -1,10 +1,11 @@
-import 'package:book_store/features/home_screen/view/components/appbar_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../sections/best_seller/section_best_seller.dart';
-import '../sections/categories/categories_section.dart';
-import '../sections/new_arrival/sction_new_arrival.dart';
-import '../sections/slider/sliders_widget.dart';
+import '../widgets/appbar_custom.dart';
+import '../widgets/best_seller/section_best_seller.dart';
+import '../widgets/categories/categories_section.dart';
+import '../widgets/drawer/drawer.dart';
+import '../widgets/new_arrival/sction_new_arrival.dart';
+import '../widgets/slider/sliders_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         title: const AppBarCustom(),
       ),

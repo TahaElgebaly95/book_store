@@ -14,4 +14,12 @@ class EndPoints {
   static const String products = 'products';
 
   static const String newArrival = 'products-new-arrivals';
+
+  static const String profile = 'profile';
+
+  static const String updateProfile = 'update-profile';
+
+  static const String updatePassword = 'update-password';
+
+  static const String deleteAccount = 'delete-profile';
 }

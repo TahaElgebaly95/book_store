@@ -16,30 +16,41 @@ class CustomTextFormField extends StatelessWidget {
   final TextStyle? hintTextStyle;
   final TextStyle? labelTextStyle;
   final InputBorder? border;
-  final bool obscureText;
+  final bool? obscureText;
   final void Function(String)? onFieldSubmitted;
+  final bool enabled;
+  final InputBorder? errorBorder;
+  final TextDirection? hintTextDirection;
+  final InputBorder? enabledBorder;
+  InputBorder? disabledBorder;
+  InputBorder? focusedBorder;
 
-  const CustomTextFormField({
-    this.controller,
-    this.validator,
-    this.label,
-    this.hintText,
-    this.labelText,
-    this.onChanged,
-    this.onTap,
-    this.filledColor,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.keyboardType,
-    this.textInputAction = TextInputAction.next,
-    super.key,
-    this.hintTextStyle,
-    this.labelTextStyle,
-    this.border,
-    required String obscuringCharacter,
-    required this.obscureText,
-    this.onFieldSubmitted,
-  });
+  CustomTextFormField(
+      {this.controller,
+      this.validator,
+      this.label,
+      this.hintText,
+      this.labelText,
+      this.onChanged,
+      this.onTap,
+      this.filledColor,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.keyboardType,
+      this.textInputAction = TextInputAction.next,
+      super.key,
+      this.hintTextStyle,
+      this.labelTextStyle,
+      this.border,
+      String? obscuringCharacter,
+      this.obscureText,
+      this.onFieldSubmitted,
+      this.errorBorder,
+      this.hintTextDirection,
+      this.enabled = false,
+      this.enabledBorder,
+      this.disabledBorder,
+      this.focusedBorder});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +60,7 @@ class CustomTextFormField extends StatelessWidget {
       },
       onFieldSubmitted: onFieldSubmitted,
       obscuringCharacter: '*',
-      obscureText: obscureText,
+      obscureText: obscureText ?? false,
       controller: controller,
       validator: validator,
       onChanged: onChanged,
@@ -57,6 +68,12 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       decoration: InputDecoration(
+          focusedBorder: focusedBorder,
+          disabledBorder: disabledBorder,
+          enabledBorder: enabledBorder,
+          errorBorder: errorBorder,
+          hintTextDirection: hintTextDirection,
+          enabled: enabled,
           hintText: hintText,
           labelText: labelText,
           label: label,
