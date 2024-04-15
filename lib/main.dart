@@ -1,4 +1,5 @@
 import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
+import 'package:book_store/features/books_screen/view_model/cubit/books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,18 +25,13 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider<AuthCubit>(create: (context) => AuthCubit()),
-        BlocProvider<SlidersCubit>(
-            create: (context) => SlidersCubit()..getSliders()),
-        BlocProvider<BestSellerCubit>(
-            create: (context) => BestSellerCubit()..getBestSeller()),
-        BlocProvider<CategoriesCubit>(
-            create: (context) => CategoriesCubit()..getCategories()),
-        BlocProvider<NewArrivalCubit>(
-            create: (context) => NewArrivalCubit()..getNewArrival()),
-        BlocProvider(
-          create: (context) => ProfileCubit()..showProfile(),
-        ),
+        BlocProvider(create: (context) => ProfileCubit()..showProfile()),
+        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => SlidersCubit()..getSliders()),
+        BlocProvider(create: (context) => BestSellerCubit()..getBestSeller()),
+        BlocProvider(create: (context) => CategoriesCubit()..getCategories()),
+        BlocProvider(create: (context) => NewArrivalCubit()..getNewArrival()),
+        BlocProvider(create: (context) => BooksCubit()..getBooks()),
       ],
       child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {

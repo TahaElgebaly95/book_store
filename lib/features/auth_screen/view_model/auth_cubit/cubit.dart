@@ -41,6 +41,7 @@ class AuthCubit extends Cubit<AuthState> {
     conPasswordController.clear();
   }
 
+
   Future<void> register() async {
     emit(RegisterLoadingState());
     await DioHelper.post(endpoint: EndPoints.register, withToken: true, body: {
@@ -90,6 +91,22 @@ class AuthCubit extends Cubit<AuthState> {
         customShowToast(error.response?.data['message'] ?? 'Login Error');
       }
       emit(LoginErrorState(error.response?.data['message'] ?? 'Error'));
+      throw error;
+    });
+  }
+
+  Future<void> logOut () async {
+    emit(LogOutLoadingState());
+    await DioHelper.post(endpoint: EndPoints.logout,withToken: true).then((value) async {
+      //await SharedHelper.remove(key: SharedKey.token);
+      await SharedHelper.clear();
+      emit(LogOutSuccessState());
+    }).catchError((error){
+      print(error.response?.data.toString());
+      if (error is DioException) {
+        customShowToast(error.response?.data['message'] ?? 'Logout Error');
+      }
+      emit(LogOutErrorState());
       throw error;
     });
   }

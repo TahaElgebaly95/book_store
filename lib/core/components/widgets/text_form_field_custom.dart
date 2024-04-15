@@ -47,7 +47,7 @@ class CustomTextFormField extends StatelessWidget {
       this.onFieldSubmitted,
       this.errorBorder,
       this.hintTextDirection,
-      this.enabled = false,
+      this.enabled = true,
       this.enabledBorder,
       this.disabledBorder,
       this.focusedBorder});

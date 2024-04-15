@@ -14,7 +14,7 @@ class SectionCategories extends StatelessWidget {
         TextCustom(
             text: '  Categories', fontSize: 20.sp, fontWeight: FontWeight.bold),
         SizedBox(height: 5.h),
-        SizedBox(width: double.infinity, child: ListOfCategories())
+        const SizedBox(width: double.infinity, child: ListOfCategories())
       ],
     );
   }

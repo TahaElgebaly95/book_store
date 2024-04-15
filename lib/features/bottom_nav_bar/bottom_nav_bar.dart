@@ -1,24 +1,25 @@
 import 'package:book_store/core/utils/colors.dart';
+import 'package:book_store/features/books_screen/view/screen/BooksScreen.dart';
 import 'package:book_store/features/home_screen/view/screen/home_screen.dart';
 import 'package:book_store/features/profile_screen/view/screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+class BottomNavBarScreen extends StatefulWidget {
+  const BottomNavBarScreen({super.key});
 
   @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
+  State<BottomNavBarScreen> createState() => _BottomNavBarScreenState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   int currentScreen = 0;
   List<Widget> screens = [
     const HomeScreen(),
+    const BooksScreen(),
     Container(),
     Container(),
-    Container(),
-    ProfileScreen(),
+    const ProfileScreen(),
   ];
 
   @override

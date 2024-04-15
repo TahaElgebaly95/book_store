@@ -1,3 +1,5 @@
+import 'package:book_store/core/data/local/shared_helper.dart';
+import 'package:book_store/core/data/local/shared_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/components/widgets/text_custom.dart';
@@ -15,7 +17,7 @@ class AppBarCustom extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextCustom(
-              text: 'Hi, ${ProfileCubit.get(context).nameController.text}',
+              text: 'Hi, ${SharedHelper.get(key: SharedKey.userName)}',
               color: AppColors.kBlack,
               fontWeight: FontWeight.bold,
               fontSize: 20.sp,

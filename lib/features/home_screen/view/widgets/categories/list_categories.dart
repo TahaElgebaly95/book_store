@@ -16,27 +16,30 @@ class ListOfCategories extends StatelessWidget {
     return BlocConsumer<CategoriesCubit, CategoriesState>(
       builder: (context, state) {
         var cubit = CategoriesCubit.get(context);
-        return SizedBox(
-          height: 100.h,
-          width: 110.w,
-          child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              itemBuilder: (context, index) => CategoriesWidget(
-                    categories: cubit.categoriesList[index],
-                    onTap: () async {
-                      await cubit.getProductsByCategories(
-                          cubit.categoriesList[index].id!.toInt());
-                      // print(cubit.categoriesList[index].id);
-                      state is GetProductsByCategoriesLoading
-                          ? const CircularProgressIndicator()
-                          : Navigation.push(context,
-                              const ListGetProductByCategoriesScreen());
-                    },
-                  ),
-              separatorBuilder: (context, index) => SizedBox(width: 0.w),
-              itemCount: cubit.categoriesList.length),
-        );
+        return state is CategoriesLoading
+            ? const Center(child: CircularProgressIndicator())
+            : SizedBox(
+                height: 100.h,
+                width: 110.w,
+                child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        state is GetProductsByCategoriesLoading
+                            ? const Center(child: CircularProgressIndicator())
+                            : CategoriesWidget(
+                                categories: cubit.categoriesList[index],
+                                onTap: () async {
+                                  await cubit.getProductsByCategories(
+                                      cubit.categoriesList[index].id!.toInt());
+                                  // print(cubit.categoriesList[index].id);
+                                  Navigation.push(context,
+                                      const ListGetProductByCategoriesScreen());
+                                },
+                              ),
+                    separatorBuilder: (context, index) => SizedBox(width: 0.w),
+                    itemCount: cubit.categoriesList.length),
+              );
       },
       listener: (context, state) {},
     );

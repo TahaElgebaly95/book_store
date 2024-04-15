@@ -16,7 +16,7 @@ class ListOfNewArrival extends StatelessWidget {
     return BlocConsumer<NewArrivalCubit, NewANewArrivalState>(
       builder: (context, state) {
         var cubit = NewArrivalCubit.get(context);
-        return ListView.separated(
+        return state is NewArrivalLoading ? const Center() : ListView.separated(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => NewArrivalWidget(

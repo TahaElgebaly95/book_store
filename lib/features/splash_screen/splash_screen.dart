@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () async {
       String? token = await SharedHelper.get(key: SharedKey.token);
       Navigation.pushAndReplace(
-          context, token == null ? const LoginScreen() : const BottomNavBar());
+          context, token == null ? const LoginScreen() : const BottomNavBarScreen());
     });
   }
 

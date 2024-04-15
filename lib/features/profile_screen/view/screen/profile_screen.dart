@@ -1,3 +1,4 @@
+import 'package:book_store/core/utils/colors.dart';
 import 'package:book_store/features/profile_screen/view/widgets/city.dart';
 import 'package:book_store/features/profile_screen/view/widgets/container_of_fields.dart';
 import 'package:book_store/features/profile_screen/view/widgets/edit_profile_button.dart';
@@ -19,31 +20,26 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: BlocBuilder<ProfileCubit, ProfileState>(
-          builder: (context, state) {
-            var cubit = BlocProvider.of<ProfileCubit>(context);
-            return ListView(
-              children: [
-                const SectionOfProfileLogo(),
-                ContainerOfFields(
-                  child: Column(
-                    children: [
-                      Name(),
-                      SizedBox(height: 8.h),
-                      Email(),
-                      SizedBox(height: 8.h),
-                      const Phone(),
-                      SizedBox(height: 8.h),
-                      const City(),
-                      SizedBox(height: 8.h),
-                      const Address(),
-                    ],
-                  ),
-                ),
-                const EditProfileButton()
-              ],
-            );
-          },
+        body:  ListView(
+          children: [
+            const SectionOfProfileLogo(),
+            ContainerOfFields(
+              child: Column(
+                children: [
+                  Name(),
+                  SizedBox(height: 8.h),
+                  Email(),
+                  SizedBox(height: 8.h),
+                  const Phone(),
+                  SizedBox(height: 8.h),
+                  const City(),
+                  SizedBox(height: 8.h),
+                  const Address(),
+                ],
+              ),
+            ),
+            const EditProfileButton()
+          ],
         ),
       ),
     );

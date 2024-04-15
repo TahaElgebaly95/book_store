@@ -22,4 +22,8 @@ class EndPoints {
   static const String updatePassword = 'update-password';
 
   static const String deleteAccount = 'delete-profile';
+
+  static const String productsSearch = 'products-search';
+
+  static const String logout = 'logout';
 }

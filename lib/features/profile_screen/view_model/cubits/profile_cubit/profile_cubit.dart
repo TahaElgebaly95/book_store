@@ -3,6 +3,7 @@ import 'package:book_store/core/data/local/shared_keys.dart';
 import 'package:book_store/core/data/network/helper/dio_helper.dart';
 import 'package:book_store/core/data/network/helper/endpoints.dart';
 import 'package:book_store/features/profile_screen/view_model/cubits/profile_cubit/profile_state.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,14 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(UpdateProfileInitial());
 
   static ProfileCubit get(context) => BlocProvider.of(context);
+
+  void resetProfile (){
+    nameController.clear();
+    emailController.clear();
+    phoneController.clear();
+    cityController.clear();
+    addressController.clear();
+  }
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -38,6 +47,7 @@ class ProfileCubit extends Cubit<ProfileState> {
           'city': cityController.text,
           'address': addressController.text
         }).then((value) {
+
       SharedHelper.set(
           key: SharedKey.token, value: value.data['data']['token']);
       SharedHelper.set(key: SharedKey.name, value: value.data['data']['name']);
@@ -54,7 +64,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  Future<void> showProfile() async {
+ void showProfile() async {
     emit(ShowProfileLoadingState());
     await DioHelper.getData(endpoint: EndPoints.profile, withToken: true)
         .then((value) {
@@ -67,6 +77,9 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ShowProfileSuccessState());
     }).catchError((error) {
       print(error.toString());
+      if (error is DioException){
+        print(error.response?.data);
+      }
       emit(ShowProfileErrorState());
       throw error;
     });

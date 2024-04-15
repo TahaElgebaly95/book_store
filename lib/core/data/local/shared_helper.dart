@@ -20,7 +20,7 @@ class SharedHelper {
       await prefs.setStringList(key, value);
     }
   }
-  static dynamic get ({required String key})async{
+  static dynamic get ({required String key}){
     return prefs.get(key);
   }
    static Future<void> remove ({required String key})async {
