@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need a permission to add images to your application</string>
 	<key>CFBundleDisplayName</key>
 	<string>Book Store</string>
 	<key>CFBundleExecutable</key>
@@ -29,6 +31,8 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
+	 <key>NSPhotoLibraryUsageDescription</key>
+        <string>photos</string>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>

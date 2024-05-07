@@ -6,7 +6,6 @@ import 'package:book_store/features/auth_screen/view/components/logo_login.dart'
 import 'package:book_store/features/auth_screen/view/components/register_button.dart';
 import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
 import 'package:book_store/features/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:book_store/features/home_screen/view/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,7 +1,6 @@
 import 'package:book_store/core/utils/navigation.dart';
 import 'package:book_store/features/home_screen/view/widgets/categories/details_of_categories/list_get_product_by_cat_.dart';
 import 'package:book_store/features/home_screen/view_model/cubit/categories_cubit/categories_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,19 +23,16 @@ class ListOfCategories extends StatelessWidget {
                 child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemBuilder: (context, index) =>
-                        state is GetProductsByCategoriesLoading
-                            ? const Center(child: CircularProgressIndicator())
-                            : CategoriesWidget(
-                                categories: cubit.categoriesList[index],
-                                onTap: () async {
-                                  await cubit.getProductsByCategories(
-                                      cubit.categoriesList[index].id!.toInt());
-                                  // print(cubit.categoriesList[index].id);
-                                  Navigation.push(context,
-                                      const ListGetProductByCategoriesScreen());
-                                },
-                              ),
+                    itemBuilder: (context, index) => CategoriesWidget(
+                          categories: cubit.categoriesList[index],
+                          onTap: () async {
+                            await cubit.getProductsByCategories(
+                                cubit.categoriesList[index].id!.toInt());
+                            // print(cubit.categoriesList[index].id);
+                            Navigation.push(context,
+                                const ListGetProductByCategoriesScreen());
+                          },
+                        ),
                     separatorBuilder: (context, index) => SizedBox(width: 0.w),
                     itemCount: cubit.categoriesList.length),
               );

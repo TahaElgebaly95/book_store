@@ -1,12 +1,7 @@
-import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
+import 'package:book_store/core/utils/logout_methods.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/components/widgets/text_custom.dart';
-import '../../../../../core/data/local/shared_helper.dart';
-import '../../../../../core/data/local/shared_keys.dart';
 import '../../../../../core/utils/colors.dart';
-import '../../../../../core/utils/navigation.dart';
-import '../../../../auth_screen/view/screens/login_screen/login_screen.dart';
-import '../../../../profile_screen/view_model/cubits/profile_cubit/profile_cubit.dart';
 
 class LogOutButton extends StatelessWidget {
   const LogOutButton({super.key});
@@ -15,11 +10,7 @@ class LogOutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        ProfileCubit.get(context).close();
-        AuthCubit.get(context).reset();
-        ProfileCubit.get(context).resetProfile();
-        AuthCubit.get(context).logOut();
-        Navigation.pushAndReplace(context, const LoginScreen());
+        Logout.logoutMethod(context);
       },
       leading: const Icon(
         Icons.login,

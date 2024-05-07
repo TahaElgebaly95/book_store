@@ -10,7 +10,7 @@ final Widget child;
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-        horizontal: 10.w,
+        horizontal: 10.w,vertical: 5.h
       ),
       padding: EdgeInsets.all(10.sp),
       height: 150.h,

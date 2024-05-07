@@ -77,17 +77,18 @@ class Products {
   String? image;
   String? category;
 
-  Products(
-      {this.id,
-      this.name,
-      this.description,
-      this.price,
-      this.discount,
-      this.priceAfterDiscount,
-      this.stock,
-      this.bestSeller,
-      this.image,
-      this.category});
+  Products({
+    this.id,
+    this.name,
+    this.description,
+    this.price,
+    this.discount,
+    this.priceAfterDiscount,
+    this.stock,
+    this.bestSeller,
+    this.image,
+    this.category,
+  });
 
   Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -100,6 +101,19 @@ class Products {
     bestSeller = json['best_seller'];
     image = json['image'];
     category = json['category'];
+  }
+
+  Products.cartFromJson(Map<String, dynamic> json) {
+    id = json['item_product_id'];
+    name = json['item_product_name'];
+    description = json['item_product_description'];
+    price = json['item_product_price'];
+    discount = json['item_product_discount'];
+    priceAfterDiscount = json['item_product_price_after_discount'];
+    stock = json['item_product_stock'];
+    bestSeller = json['item_product_best_seller'];
+    image = json['item_product_image'];
+    category = json['item_product_category'];
   }
 
   Map<String, dynamic> toJson() {

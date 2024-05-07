@@ -26,4 +26,24 @@ class EndPoints {
   static const String productsSearch = 'products-search';
 
   static const String logout = 'logout';
+
+  static const String wishlist = 'wishlist';
+
+  static const String addToWishlist = 'add-to-wishlist';
+
+  static const String deleteWishlist = 'remove-from-wishlist';
+
+  static const String cart = 'cart';
+
+  static const String deleteCart = 'remove-from-cart';
+
+  static const String updateCart = 'update-cart';
+
+  static const String addToCart = 'add-to-cart';
+
+  static const String removeFromCart = 'remove-from-cart';
+
+   static const String checkout = 'checkout';
+
+   static const String placeOrder = 'place-order';
 }

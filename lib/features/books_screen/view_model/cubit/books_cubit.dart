@@ -1,4 +1,5 @@
 import 'package:book_store/core/data/network/helper/endpoints.dart';
+import 'package:book_store/features/cart_screen/view_model/cubits/cart_cubit/cubit.dart';
 import 'package:book_store/features/home_screen/model/products/all_products_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,7 @@ class BooksCubit extends Cubit<BooksStates> {
   static BooksCubit get(context) => BlocProvider.of(context);
 
   List<Products> booksList = [];
+  AllProductModel allProductModel = AllProductModel();
 
   Future<void> getBooks() async {
     emit(LoadingBooksStates());
@@ -18,12 +20,13 @@ class BooksCubit extends Cubit<BooksStates> {
       endpoint: EndPoints.products,
     ).then(
       (value) {
-        for (var e in value.data['data']['products']) {
-          booksList.add(Products.fromJson(e));
-        }
+        allProductModel = AllProductModel.fromJson(value.data);
+        booksList = allProductModel.data!.products!;
         emit(SuccessBooksStates());
       },
-    ).catchError((error) {});
+    ).catchError((error) {
+      emit(ErrorBooksStates(error.toString()));
+    });
   }
 
   TextEditingController searchController = TextEditingController();

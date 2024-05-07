@@ -1,4 +1,5 @@
 import 'package:book_store/core/utils/colors.dart';
+import 'package:book_store/features/cart_screen/view_model/cubits/cart_cubit/cubit.dart';
 import 'package:book_store/features/home_screen/model/products/all_products_model.dart';
 import 'package:book_store/features/home_screen/view/widgets/best_seller/book_details/container_of_image.dart';
 import 'package:book_store/features/home_screen/view/widgets/best_seller/book_details/details_of_book.dart';
@@ -6,10 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/components/widgets/elevated_button.dart';
+import '../../../../../books_screen/view_model/cubit/books_cubit.dart';
 
 class ShowBookDetails extends StatelessWidget {
-  ShowBookDetails({super.key, required this.products});
-  Products products;
+  const ShowBookDetails({super.key, required this.products, this.onPressed});
+
+  final Products products;
+  final void Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,7 @@ class ShowBookDetails extends StatelessWidget {
                           backgroundColor:
                               AppColors.kTransparent.withOpacity(.5),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: onPressed,
                             icon: Icon(
                               Icons.favorite_border_outlined,
                               color: AppColors.kRed,
@@ -57,7 +62,10 @@ class ShowBookDetails extends StatelessWidget {
           ),
           CustomElevatedButton(
             nameOfButton: 'Add to Cart',
-            onPressed: () {},
+            onPressed: () {
+              CartCubit.get(context).addToCart(
+                  id:products.id!);
+            },
             backgroundColor: AppColors.primaryColor,
           ),
           const SizedBox(height: 20)

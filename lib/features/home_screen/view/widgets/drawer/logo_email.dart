@@ -1,12 +1,10 @@
 import 'package:book_store/core/data/local/shared_helper.dart';
 import 'package:book_store/core/data/local/shared_keys.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/components/widgets/text_custom.dart';
 import '../../../../../core/utils/colors.dart';
-import '../../../../profile_screen/view_model/cubits/profile_cubit/profile_cubit.dart';
 
 class LogoAndEmail extends StatelessWidget {
   const LogoAndEmail({super.key});

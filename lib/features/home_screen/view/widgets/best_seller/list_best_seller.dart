@@ -1,6 +1,5 @@
 import 'package:book_store/core/utils/navigation.dart';
 import 'package:book_store/features/home_screen/view/widgets/best_seller/book_details/show_book_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../view_model/cubit/best_seller_cubit/best_seller_cubit.dart';

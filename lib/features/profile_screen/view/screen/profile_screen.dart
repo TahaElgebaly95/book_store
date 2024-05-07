@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../view_model/cubits/profile_cubit/profile_cubit.dart';
-import '../../view_model/cubits/profile_cubit/profile_state.dart';
 import '../widgets/address.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -18,22 +17,25 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return BlocProvider(
+      create: (context) => ProfileCubit()..showProfile(),
       child: Scaffold(
-        body:  ListView(
+        appBar: AppBar(backgroundColor: AppColors.primaryColor,elevation: 0,),
+        body: ListView(
           children: [
             const SectionOfProfileLogo(),
+            SizedBox(height: 30.h,),
             ContainerOfFields(
               child: Column(
                 children: [
                   Name(),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 7.h),
                   Email(),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 7.h),
                   const Phone(),
                   SizedBox(height: 8.h),
                   const City(),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 5.h),
                   const Address(),
                 ],
               ),

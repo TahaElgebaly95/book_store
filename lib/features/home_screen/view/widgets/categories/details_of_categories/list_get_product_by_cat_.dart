@@ -1,5 +1,3 @@
-import 'package:book_store/core/utils/navigation.dart';
-import 'package:book_store/features/home_screen/view/widgets/best_seller/book_details/show_book_details.dart';
 import 'package:book_store/features/home_screen/view/widgets/categories/details_of_categories/show_categories_widget.dart';
 import 'package:book_store/features/home_screen/view_model/cubit/categories_cubit/categories_cubit.dart';
 import 'package:flutter/material.dart';
