@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../view_model/cubit/categories_cubit/categories_state.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  const CategoriesWidget({super.key, required this.categories, this.onTap});
+  const   CategoriesWidget({super.key, required this.categories, this.onTap});
 
   // final int id;
   final Categories categories;

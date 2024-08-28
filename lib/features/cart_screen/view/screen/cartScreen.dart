@@ -12,9 +12,19 @@ import '../../view_model/cubits/cart_cubit/states.dart';
 import '../widgets/cart_widgets/delete_dialog.dart';
 import '../widgets/cart_widgets/plus_minus.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
+  void initState() {
+    super.initState();
+    CartCubit.get(context).showCart();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +36,13 @@ class CartScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = CartCubit.get(context);
           return cubit.cartList.isEmpty
-              ? const Center(
-                  child: Text(
-                  'Cart is empty',
-                  style: TextStyle(fontSize: 20),
-                ))
+              ? Center(
+                  child: TextCustom(
+                    text: 'Cart is empty',
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
               : Column(
                   children: [
                     Expanded(
@@ -39,8 +51,7 @@ class CartScreen extends StatelessWidget {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return ContainerOfWidget(
-                            child:
-                            Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(
@@ -68,7 +79,7 @@ class CartScreen extends StatelessWidget {
                                               cubit
                                                   .removeFromCart(
                                                     id: cubit.cartList[index]
-                                                        .itemId!,
+                                                        .itemId!.toInt(),
                                                   )
                                                   .then(
                                                     (value) =>
@@ -90,7 +101,7 @@ class CartScreen extends StatelessWidget {
                                                       .cartList[index].itemId!,
                                                   quantity: cubit
                                                           .cartList[index]
-                                                          .itemQuantity! +
+                                                          .itemQuantity!.toInt() +
                                                       1);
                                             },
                                             minus: () {
@@ -99,7 +110,7 @@ class CartScreen extends StatelessWidget {
                                                       .cartList[index].itemId!,
                                                   quantity: cubit
                                                           .cartList[index]
-                                                          .itemQuantity! -
+                                                          .itemQuantity!.toInt() -
                                                       1);
                                             },
                                           ),

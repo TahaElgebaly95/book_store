@@ -1,4 +1,3 @@
-import 'package:book_store/features/books_screen/view_model/cubit/books_cubit.dart';
 import 'package:book_store/features/cart_screen/model/cart_model.dart';
 import 'package:book_store/features/cart_screen/view_model/cubits/cart_cubit/states.dart';
 import 'package:dio/dio.dart';
@@ -17,16 +16,12 @@ class CartCubit extends Cubit<CartState> {
   CartModel cartModel = CartModel();
 
   Future<void> showCart() async {
-    //cartList.clear();
+    cartList.clear();
     emit(CartLoadingState());
     await DioHelper.getData(endpoint: EndPoints.cart, withToken: true)
         .then((value) {
       cartModel = CartModel.fromJson(value.data);
       cartList = cartModel.data!.cartItems!;
-
-      // for (var element in value.data['data']['cart_items']) {
-      //   cartList.add(CartItems.fromJson(element));
-      // }
       emit(CartSuccessState());
     }).catchError((error) {
       if (kDebugMode) {
@@ -43,7 +38,7 @@ class CartCubit extends Cubit<CartState> {
             body: {"product_id": "$id"},
             withToken: true)
         .then((value) {
-      // showCart();
+       showCart();
       emit(CartAddedSuccessState());
     }).catchError((error) {
       if (kDebugMode) {

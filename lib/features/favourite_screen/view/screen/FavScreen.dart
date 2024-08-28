@@ -30,7 +30,11 @@ class _FavScreenState extends State<FavScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const TextCustom(text: 'Favourite'),
+        title: TextCustom(
+          text: 'Favourite',
+          fontWeight: FontWeight.bold,
+          fontSize: 20.sp,
+        ),
       ),
       body: BlocConsumer<FavouriteCubit, FavouriteState>(
         builder: (context, state) {
@@ -46,8 +50,8 @@ class _FavScreenState extends State<FavScreen> {
                   cubit.removeFromFavourite(id: cubit.favouriteList[index].id!);
                 },
                 cartButton: () {
-                  CartCubit.get(context).addToCart(
-                      id: cubit.favouriteList[index].id!);
+                  CartCubit.get(context)
+                      .addToCart(id: cubit.favouriteList[index].id!);
                 },
               );
             },

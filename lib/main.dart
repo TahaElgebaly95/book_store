@@ -1,12 +1,12 @@
 import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
 import 'package:book_store/features/books_screen/view_model/cubit/books_cubit.dart';
 import 'package:book_store/features/favourite_screen/view_model/cubits/fav_cubit/cubit.dart';
+import 'package:book_store/features/order_screen/view_model/cubit/order_cubit.dart';
 import 'package:book_store/features/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/data/local/shared_helper.dart';
-import 'core/data/local/shared_keys.dart';
 import 'core/data/network/helper/bloc_observer.dart';
 import 'core/data/network/helper/dio_helper.dart';
 import 'features/auth_screen/view_model/auth_cubit/state.dart';
@@ -22,7 +22,7 @@ void main() async {
   await SharedHelper.init();
   await DioHelper.init();
   //await SharedHelper.clear();
-  String? token = await SharedHelper.get(key: SharedKey.token);
+  //String? token = await SharedHelper.get(key: SharedKey.token);
   runApp(
     MultiBlocProvider(
       providers: [
@@ -33,12 +33,15 @@ void main() async {
         BlocProvider(create: (context) => NewArrivalCubit()..getNewArrival()),
         BlocProvider(create: (context) => BooksCubit()..getBooks()),
         BlocProvider(create: (context) => FavouriteCubit()),
-        BlocProvider(create: (context) => CartCubit()..showCart()),
+        BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(
+          create: (context) => OrderCubit(),
+        )
       ],
       child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
-          var cubit = BestSellerCubit.get(context);
-          return ScreenUtilInit(
+          return
+            ScreenUtilInit(
             designSize: const Size(360, 690),
             minTextAdapt: true,
             splitScreenMode: true,
