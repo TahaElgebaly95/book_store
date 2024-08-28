@@ -1,12 +1,12 @@
-class NewANewArrivalState {}
+class NewArrivalState {}
 
-class NewArrivalInitial extends NewANewArrivalState {}
+class NewArrivalInitial extends NewArrivalState {}
 
-class NewArrivalLoading extends NewANewArrivalState {}
+class NewArrivalLoading extends NewArrivalState {}
 
-class NewArrivalSuccess extends NewANewArrivalState {}
+class NewArrivalSuccess extends NewArrivalState {}
 
-class NewArrivalError extends NewANewArrivalState {
+class NewArrivalError extends NewArrivalState {
   final String error;
   NewArrivalError(this.error);
 }

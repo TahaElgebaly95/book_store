@@ -2,7 +2,6 @@ import 'package:book_store/features/books_screen/view/widgets/books_widget/cart_
 import 'package:book_store/features/books_screen/view/widgets/books_widget/container_of_widget.dart';
 import 'package:book_store/features/books_screen/view/widgets/books_widget/details_texts.dart';
 import 'package:book_store/features/books_screen/view/widgets/books_widget/discount_container.dart';
-import 'package:book_store/features/cart_screen/view_model/cubits/cart_cubit/cubit.dart';
 import 'package:book_store/features/home_screen/model/products/all_products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

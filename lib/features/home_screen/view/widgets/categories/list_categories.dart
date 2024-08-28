@@ -12,7 +12,7 @@ class ListOfCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CategoriesCubit, CategoriesState>(
+    return BlocBuilder<CategoriesCubit, CategoriesState>(
       builder: (context, state) {
         var cubit = CategoriesCubit.get(context);
         return state is CategoriesLoading
@@ -37,7 +37,7 @@ class ListOfCategories extends StatelessWidget {
                     itemCount: cubit.categoriesList.length),
               );
       },
-      listener: (context, state) {},
+
     );
   }
 }

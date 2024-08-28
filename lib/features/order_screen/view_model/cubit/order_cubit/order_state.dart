@@ -25,3 +25,15 @@ class ShowSingleOrderLoadingState extends OrderState {}
 class ShowSingleOrderSuccessState extends OrderState {}
 
 class ShowSingleOrderErrorState extends OrderState {}
+
+final class GovernoratesInitial extends OrderState {}
+
+final class GovernoratesLoading extends OrderState {}
+
+final class GovernoratesSuccess extends OrderState {}
+
+final class GovernoratesError extends OrderState {}
+
+final class ChangeGovernorate extends OrderState {}
+
+

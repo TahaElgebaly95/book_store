@@ -2,8 +2,9 @@ import 'package:book_store/core/data/local/shared_helper.dart';
 import 'package:book_store/core/data/local/shared_keys.dart';
 import 'package:book_store/core/data/network/helper/dio_helper.dart';
 import 'package:book_store/core/data/network/helper/endpoints.dart';
+import 'package:book_store/features/order_screen/model/governrate_model.dart';
 import 'package:book_store/features/order_screen/model/order_history_model.dart';
-import 'package:book_store/features/order_screen/view/screen/order_history.dart';
+import 'package:book_store/features/order_screen/model/place_order_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,7 @@ class OrderCubit extends Cubit<OrderState> {
   TextEditingController phoneCheckoutController = TextEditingController();
   TextEditingController addressCheckoutController = TextEditingController();
   TextEditingController cityCheckoutController = TextEditingController();
+  TextEditingController governorateCheckoutController = TextEditingController();
 
   Future<void> checkout() async {
     emit(CheckoutLoadingState());
@@ -42,17 +44,42 @@ class OrderCubit extends Cubit<OrderState> {
     });
   }
 
+  var selectItem = 0;
+
+  void changeSelectItem(int? value) {
+    selectItem = value!;
+    emit(ChangeGovernorate());
+  }
+
+  List<DataGovernorates> dataGovernorates = [];
+  GovernRateModel? governRateModel;
+
+  Future<void> getGovernoratesList() async {
+    emit(GovernoratesLoading());
+    await DioHelper.getData(endpoint: EndPoints.governorates).then((value) {
+      governRateModel = GovernRateModel.fromJson(value.data);
+      dataGovernorates = governRateModel!.data!;
+      emit(GovernoratesSuccess());
+    }).catchError((error) {
+      print(error.toString());
+      emit(GovernoratesError());
+    });
+  }
+
+  PlaceOrderModel? placeOrderModel;
   Future<void> placeOrder() async {
     emit(PlaceOrderLoadingState());
     await DioHelper.post(body: {
-      'name': SharedHelper.get(key: SharedKey.nameCheckout),
-      'email': SharedHelper.get(key: SharedKey.emailCheckout),
-      'phone': SharedHelper.get(key: SharedKey.phoneCheckout),
-      'address': SharedHelper.get(key: SharedKey.addressCheckout),
-      'city': SharedHelper.get(key: SharedKey.cityCheckout),
-      'governorate_id': 10
+      'name': nameCheckoutController.text,
+      'email': emailCheckoutController.text,
+      'phone': phoneCheckoutController.text,
+      'address': addressCheckoutController.text,
+      'city': cityCheckoutController.text,
+      'governorate_id': dataGovernorates[selectItem].id,
     }, endpoint: EndPoints.placeOrder, withToken: true)
         .then((value) {
+      placeOrderModel = PlaceOrderModel.fromJson(value.data);
+      print(placeOrderModel!.message);
       emit(PlaceOrderSuccessState());
     }).catchError((error) {
       print(error.toString());
@@ -60,7 +87,7 @@ class OrderCubit extends Cubit<OrderState> {
     });
   }
 
-  OrderHistoryModel orderHistoryList = OrderHistoryModel();
+  OrderHistoryModel? orderHistoryList;
   List<Orders> orders = [];
 
   Future<void> orderHistory() async {
@@ -68,13 +95,14 @@ class OrderCubit extends Cubit<OrderState> {
     await DioHelper.getData(endpoint: EndPoints.orderHistory, withToken: true)
         .then((value) {
       orderHistoryList = OrderHistoryModel.fromJson(value.data);
-      orders = orderHistoryList.data!.orders!;
+      orders = orderHistoryList!.data!.orders!;
       emit(OrderHistorySuccessState());
     }).catchError((error) {
       print(error.toString());
       emit(OrderHistoryErrorState());
     });
   }
+
 
 // Future<void> showSingleOrder() {
 //   emit(ShowOrderLoadingState());

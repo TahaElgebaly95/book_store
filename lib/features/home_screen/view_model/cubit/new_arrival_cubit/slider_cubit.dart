@@ -4,7 +4,7 @@ import 'package:book_store/features/home_screen/view_model/cubit/new_arrival_cub
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../model/products/all_products_model.dart';
 
-class NewArrivalCubit extends Cubit<NewANewArrivalState> {
+class NewArrivalCubit extends Cubit<NewArrivalState> {
   NewArrivalCubit() : super(NewArrivalInitial());
 
   static NewArrivalCubit get(context) =>

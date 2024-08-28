@@ -5,12 +5,10 @@ import '../widgets/best_seller/section_best_seller.dart';
 import '../widgets/categories/categories_section.dart';
 import '../widgets/drawer/drawer.dart';
 import '../widgets/new_arrival/sction_new_arrival.dart';
-import '../widgets/slider/sliders_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +19,10 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         children: [
           SizedBox(height: 15.h),
-          const SliderWidget(),
+         // CarouselView(itemExtent: MediaQuery.of(context).size.width, children: [
+         //   Image.asset('assets/images/1.jpg'),
+         // ]),
+         // const SliderWidget(),
           SizedBox(height: 15.h),
           const SectionBestSeller(),
           SizedBox(height: 5.h),

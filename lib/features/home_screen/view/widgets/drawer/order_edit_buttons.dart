@@ -1,3 +1,4 @@
+import 'package:book_store/features/order_screen/view/screen/order_history.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/components/widgets/text_custom.dart';
 import '../../../../../core/utils/colors.dart';
@@ -13,7 +14,7 @@ class OrderAndEditButtons extends StatelessWidget {
       children: [
         ListTile(
           onTap: () {
-            // Navigation.push(context, screen)
+             Navigation.push(context,  const OrderHistory());
           },
           leading: const Icon(
             Icons.history,
@@ -24,6 +25,7 @@ class OrderAndEditButtons extends StatelessWidget {
             text: 'Order History',
             color: AppColors.kGrey,
             fontSize: 20,
+
           ),
         ),
         const Divider(color: AppColors.kGrey, endIndent: 30, indent: 20),

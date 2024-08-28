@@ -19,11 +19,11 @@ class SearchWidget extends StatelessWidget {
             onChanged: (value) {
               cubit.getBooksBySearch(value);
             },
-            padding: MaterialStatePropertyAll(
+            padding: WidgetStatePropertyAll(
                 EdgeInsets.symmetric(horizontal: 10.w)),
             leading: const Icon(Icons.search),
             hintText: 'Search',
-            elevation: const MaterialStatePropertyAll(1),
+            elevation: const WidgetStatePropertyAll(1),
           );
         },
       );

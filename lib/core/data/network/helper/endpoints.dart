@@ -46,4 +46,8 @@ class EndPoints {
    static const String checkout = 'checkout';
 
    static const String placeOrder = 'place-order';
+
+   static const String orderHistory = 'order-history';
+
+   static const String governorates = 'governorates';
 }

@@ -12,7 +12,6 @@ import '../../view_model/cubit/books_states.dart';
 class ListOfBooks extends StatelessWidget {
   const ListOfBooks({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BooksCubit, BooksStates>(
@@ -25,35 +24,32 @@ class ListOfBooks extends StatelessWidget {
             : ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => state is LoadingBooksStates
-                    ? const CircularProgressIndicator()
-                    : SizedBox(
-                        height: 170.h,
-                        child: BooksWidget(
-                            favButton: () {
-                              FavouriteCubit.get(context)
-                                  .addToFavourite(
-                                      id: cubit.booksList[index].id!);
-                            },
-                            cartButton: () {
-                              CartCubit.get(context)
-                                  .addToCart(id: cubit.booksList[index].id!);
-                            },
-                            onTap: () {
-                              Navigation.push(
-                                  context,
-                                  ShowBookDetails(
-                                      onPressed: () {
-                                        FavouriteCubit.get(context)
-                                            .addToFavourite(
-                                                id: cubit.booksList[index].id!);
-                                      },
-                                      products: cubit.booksList[index]));
-                            },
-                            allProductModel: cubit.searchController.text.isEmpty
-                                ? cubit.booksList[index]
-                                : cubit.searchList[index]),
-                      ),
+                itemBuilder: (context, index) => SizedBox(
+                      height: 170.h,
+                      child: BooksWidget(
+                          favButton: () {
+                            FavouriteCubit.get(context)
+                                .addToFavourite(id: cubit.booksList[index].id!);
+                          },
+                          cartButton: () {
+                            CartCubit.get(context)
+                                .addToCart(id: cubit.booksList[index].id!);
+                          },
+                          onTap: () {
+                            Navigation.push(
+                                context,
+                                ShowBookDetails(
+                                    onPressed: () {
+                                      FavouriteCubit.get(context)
+                                          .addToFavourite(
+                                              id: cubit.booksList[index].id!);
+                                    },
+                                    products: cubit.booksList[index]));
+                          },
+                          allProductModel: cubit.searchController.text.isEmpty
+                              ? cubit.booksList[index]
+                              : cubit.searchList[index]),
+                    ),
                 separatorBuilder: (context, index) => const SizedBox.shrink(),
                 itemCount: cubit.searchController.text.trim().isEmpty
                     ? cubit.booksList.length

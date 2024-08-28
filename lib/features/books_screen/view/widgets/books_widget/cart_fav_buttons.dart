@@ -12,7 +12,6 @@ class CartAndFavButtons extends StatelessWidget {
   final void Function()? cartButton;
   Products? productsId;
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavouriteCubit, FavouriteState>(
@@ -22,11 +21,11 @@ class CartAndFavButtons extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             IconButton(
-                onPressed: favButton,
-                icon: productsId != null ? Icon(Icons.favorite, size: 30.sp) : Icon(
-                        Icons.favorite_border_outlined,
-                        size: 30.sp,
-                      )),
+              onPressed: favButton,
+              icon: productsId != null
+                  ? Icon(Icons.favorite, size: 30.sp)
+                  : Icon(Icons.favorite_border_outlined, size: 30.sp),
+            ),
             const Spacer(),
             IconButton(
               onPressed: cartButton,

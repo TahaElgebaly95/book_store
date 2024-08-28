@@ -1,7 +1,6 @@
 import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
 import 'package:book_store/features/books_screen/view_model/cubit/books_cubit.dart';
 import 'package:book_store/features/favourite_screen/view_model/cubits/fav_cubit/cubit.dart';
-import 'package:book_store/features/order_screen/view_model/cubit/order_cubit.dart';
 import 'package:book_store/features/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +14,7 @@ import 'features/home_screen/view_model/cubit/best_seller_cubit/best_seller_cubi
 import 'features/home_screen/view_model/cubit/categories_cubit/categories_cubit.dart';
 import 'features/home_screen/view_model/cubit/new_arrival_cubit/slider_cubit.dart';
 import 'features/home_screen/view_model/cubit/slider_cubit/slider_cubit.dart';
+import 'features/order_screen/view_model/cubit/order_cubit/order_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,14 +34,13 @@ void main() async {
         BlocProvider(create: (context) => BooksCubit()..getBooks()),
         BlocProvider(create: (context) => FavouriteCubit()),
         BlocProvider(create: (context) => CartCubit()),
-        BlocProvider(
-          create: (context) => OrderCubit(),
-        )
+        BlocProvider(create: (context) => OrderCubit()),
+        BlocProvider(create: (context) => OrderCubit()..orderHistory()),
+        BlocProvider(create: (context) => OrderCubit()..getGovernoratesList()),
       ],
       child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
-          return
-            ScreenUtilInit(
+          return ScreenUtilInit(
             designSize: const Size(360, 690),
             minTextAdapt: true,
             splitScreenMode: true,

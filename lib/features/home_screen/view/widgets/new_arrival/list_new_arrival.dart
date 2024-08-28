@@ -13,7 +13,7 @@ class ListOfNewArrival extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NewArrivalCubit, NewANewArrivalState>(
+    return BlocConsumer<NewArrivalCubit, NewArrivalState>(
       builder: (context, state) {
         var cubit = NewArrivalCubit.get(context);
         return state is NewArrivalLoading ? const Center() : ListView.separated(

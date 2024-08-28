@@ -1,5 +1,5 @@
 import 'package:book_store/core/data/network/helper/endpoints.dart';
-import 'package:book_store/features/cart_screen/view_model/cubits/cart_cubit/cubit.dart';
+import 'package:book_store/features/favourite_screen/view_model/cubits/fav_cubit/cubit.dart';
 import 'package:book_store/features/home_screen/model/products/all_products_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +10,12 @@ class BooksCubit extends Cubit<BooksStates> {
   BooksCubit() : super(InitialBooksStates());
 
   static BooksCubit get(context) => BlocProvider.of(context);
+
+  bool isFaV = false;
+  void changeFaVColor() {
+    isFaV = !isFaV;
+    emit(ChangeFavColorSuccessState());
+  }
 
   List<Products> booksList = [];
   AllProductModel allProductModel = AllProductModel();
