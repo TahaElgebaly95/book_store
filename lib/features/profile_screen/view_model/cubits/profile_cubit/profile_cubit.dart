@@ -3,6 +3,7 @@ import 'package:book_store/core/data/local/shared_keys.dart';
 import 'package:book_store/core/data/network/helper/dio_helper.dart';
 import 'package:book_store/core/data/network/helper/endpoints.dart';
 import 'package:book_store/features/profile_screen/view_model/cubits/profile_cubit/profile_state.dart';
+import 'package:book_store/features/profile_screen/view_model/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +13,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   static ProfileCubit get(context) => BlocProvider.of(context);
 
-  void resetProfile (){
+  void resetProfile() {
     nameController.clear();
     emailController.clear();
     phoneController.clear();
@@ -29,6 +30,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   GlobalKey<FormState> profileKey = GlobalKey<FormState>();
 
   bool isEditing = false;
+
   void changeEditingProfile() {
     isEditing = !isEditing;
 
@@ -47,7 +49,6 @@ class ProfileCubit extends Cubit<ProfileState> {
           'city': cityController.text,
           'address': addressController.text
         }).then((value) {
-
       SharedHelper.set(
           key: SharedKey.token, value: value.data['data']['token']);
       SharedHelper.set(key: SharedKey.name, value: value.data['data']['name']);
@@ -64,7 +65,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
- void showProfile() async {
+  void showProfile() async {
     emit(ShowProfileLoadingState());
     await DioHelper.getData(endpoint: EndPoints.profile, withToken: true)
         .then((value) {
@@ -77,7 +78,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ShowProfileSuccessState());
     }).catchError((error) {
       print(error.toString());
-      if (error is DioException){
+      if (error is DioException) {
         print(error.response?.data);
       }
       emit(ShowProfileErrorState());
@@ -85,40 +86,5 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  TextEditingController currentPasswordController = TextEditingController();
-  TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
 
-  Future<void> deleteProfile() async {
-    emit(DeleteProfileLoadingState());
-    await DioHelper.post(
-            endpoint: EndPoints.deleteAccount,
-            withToken: true,
-            body: {"current_password": currentPasswordController.text})
-        .then((value) {
-      emit(DeleteProfileSuccessState());
-    }).catchError((error) {
-      print(error.toString());
-      emit(DeleteProfileErrorState());
-      throw error;
-    });
-  }
-
-  Future<void> changePassword() async {
-    emit(ChangePasswordLoadingState());
-    await DioHelper.post(
-        endpoint: EndPoints.updatePassword,
-        withToken: true,
-        body: {
-          "current_password": currentPasswordController.text,
-          "new_password": newPasswordController.text,
-          "confirm_password": confirmPasswordController.text
-        }).then((value) {
-      emit(ChangePasswordSuccessState());
-    }).catchError((error) {
-      print(error.toString());
-      emit(ChangePasswordErrorState());
-      throw error;
-    });
-  }
 }

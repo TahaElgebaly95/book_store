@@ -6,8 +6,9 @@ import '../../../../core/components/widgets/text_form_field_custom.dart';
 import '../../../../core/data/local/shared_helper.dart';
 import '../../../../core/data/local/shared_keys.dart';
 import '../../../../core/utils/colors.dart';
-import '../../view_model/cubit/order_cubit.dart';
-import '../../view_model/cubit/order_state.dart';
+
+import '../../view_model/cubit/order_cubit/order_cubit.dart';
+import '../../view_model/cubit/order_cubit/order_state.dart';
 
 class CheckoutPhone extends StatelessWidget {
   const CheckoutPhone({super.key});

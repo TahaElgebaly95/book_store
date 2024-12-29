@@ -1,6 +1,8 @@
 import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
 import 'package:book_store/features/books_screen/view_model/cubit/books_cubit.dart';
 import 'package:book_store/features/favourite_screen/view_model/cubits/fav_cubit/cubit.dart';
+import 'package:book_store/features/profile_screen/view_model/cubits/profile_cubit/profile_cubit.dart';
+import 'package:book_store/features/profile_screen/view_model/cubits/update_password_cubit/update_password_cubit.dart';
 import 'package:book_store/features/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,6 +39,8 @@ void main() async {
         BlocProvider(create: (context) => OrderCubit()),
         BlocProvider(create: (context) => OrderCubit()..orderHistory()),
         BlocProvider(create: (context) => OrderCubit()..getGovernoratesList()),
+        BlocProvider(create: (context) => ProfileCubit()),
+        BlocProvider(create: (context) => UpdatePasswordCubit()),
       ],
       child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/components/widgets/text_custom.dart';
 import '../../../../../core/utils/colors.dart';
+import '../../../../../core/utils/navigation.dart';
+import '../../../../profile_screen/view/screen/change_password.dart';
 
 class ChangePasswordButton extends StatelessWidget {
   const ChangePasswordButton({super.key});
@@ -12,7 +14,7 @@ class ChangePasswordButton extends StatelessWidget {
         const Divider(color: AppColors.kGrey, endIndent: 30, indent: 20),
         ListTile(
           onTap: () {
-            // Navigation.push(context, screen)
+             Navigation.push(context, const ChangePasswordScreen());
           },
           leading: const Icon(
             Icons.change_circle_outlined,

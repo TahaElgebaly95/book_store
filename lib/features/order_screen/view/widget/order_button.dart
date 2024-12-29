@@ -1,5 +1,4 @@
 import 'package:book_store/core/utils/show_toast.dart';
-import 'package:book_store/features/order_screen/view_model/cubit/order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/components/widgets/text_custom.dart';
@@ -7,6 +6,7 @@ import '../../../../core/utils/colors.dart';
 import '../../../../core/utils/navigation.dart';
 import '../../../bottom_nav_bar/bottom_nav_bar.dart';
 import '../../../cart_screen/view_model/cubits/cart_cubit/cubit.dart';
+import '../../view_model/cubit/order_cubit/order_cubit.dart';
 
 class CheckoutButton extends StatelessWidget {
   const CheckoutButton({super.key});

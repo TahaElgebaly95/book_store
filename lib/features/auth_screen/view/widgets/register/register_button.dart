@@ -2,10 +2,10 @@ import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/components/widgets/text_custom.dart';
-import '../../../../core/utils/colors.dart';
-import '../../../../core/utils/navigation.dart';
-import '../screens/register_screen/register_screen.dart';
+import '../../../../../core/components/widgets/text_custom.dart';
+import '../../../../../core/utils/colors.dart';
+import '../../../../../core/utils/navigation.dart';
+import '../../screens/register_screen/register_screen.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({super.key});

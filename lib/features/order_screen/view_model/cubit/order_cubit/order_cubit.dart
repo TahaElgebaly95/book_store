@@ -3,11 +3,11 @@ import 'package:book_store/core/data/local/shared_keys.dart';
 import 'package:book_store/core/data/network/helper/dio_helper.dart';
 import 'package:book_store/core/data/network/helper/endpoints.dart';
 import 'package:book_store/features/order_screen/model/governrate_model.dart';
-import 'package:book_store/features/order_screen/model/order_history_model.dart';
 import 'package:book_store/features/order_screen/model/place_order_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../model/order_history_model.dart';
 import 'order_state.dart';
 
 class OrderCubit extends Cubit<OrderState> {

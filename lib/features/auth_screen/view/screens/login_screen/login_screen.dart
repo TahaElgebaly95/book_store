@@ -2,14 +2,14 @@ import 'package:book_store/core/components/widgets/elevated_button.dart';
 import 'package:book_store/core/components/widgets/text_form_field_custom.dart';
 import 'package:book_store/core/utils/colors.dart';
 import 'package:book_store/core/utils/navigation.dart';
-import 'package:book_store/features/auth_screen/view/components/logo_login.dart';
-import 'package:book_store/features/auth_screen/view/components/register_button.dart';
 import 'package:book_store/features/auth_screen/view_model/auth_cubit/cubit.dart';
 import 'package:book_store/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../view_model/auth_cubit/state.dart';
+import '../../widgets/login/logo_login.dart';
+import '../../widgets/register/register_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

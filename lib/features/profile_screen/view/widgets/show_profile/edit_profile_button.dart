@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/components/widgets/elevated_button.dart';
-import '../../../../core/utils/colors.dart';
-import '../../view_model/cubits/profile_cubit/profile_cubit.dart';
-import '../../view_model/cubits/profile_cubit/profile_state.dart';
+
+import '../../../../../core/components/widgets/elevated_button.dart';
+import '../../../../../core/utils/colors.dart';
+import '../../../view_model/cubits/profile_cubit/profile_cubit.dart';
+import '../../../view_model/cubits/profile_cubit/profile_state.dart';
 
 class EditProfileButton extends StatelessWidget {
   const EditProfileButton({super.key});

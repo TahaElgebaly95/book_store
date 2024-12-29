@@ -3,7 +3,7 @@ import 'package:book_store/features/books_screen/view/screen/BooksScreen.dart';
 import 'package:book_store/features/cart_screen/view/screen/cartScreen.dart';
 import 'package:book_store/features/favourite_screen/view/screen/FavScreen.dart';
 import 'package:book_store/features/home_screen/view/screen/home_screen.dart';
-import 'package:book_store/features/profile_screen/view/screen/profile_screen.dart';
+import 'package:book_store/features/profile_screen/view/screen/show_update_profile_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 

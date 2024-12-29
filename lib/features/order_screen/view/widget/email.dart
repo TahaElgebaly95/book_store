@@ -6,8 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/components/widgets/text_form_field_custom.dart';
 import '../../../../core/utils/colors.dart';
-import '../../view_model/cubit/order_cubit.dart';
-import '../../view_model/cubit/order_state.dart';
+import '../../view_model/cubit/order_cubit/order_cubit.dart';
+import '../../view_model/cubit/order_cubit/order_state.dart';
+
 
 class CheckoutEmail extends StatelessWidget {
   const CheckoutEmail({super.key});

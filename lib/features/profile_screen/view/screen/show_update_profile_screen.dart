@@ -1,16 +1,16 @@
 import 'package:book_store/core/utils/colors.dart';
-import 'package:book_store/features/profile_screen/view/widgets/city.dart';
-import 'package:book_store/features/profile_screen/view/widgets/container_of_fields.dart';
-import 'package:book_store/features/profile_screen/view/widgets/edit_profile_button.dart';
-import 'package:book_store/features/profile_screen/view/widgets/email.dart';
-import 'package:book_store/features/profile_screen/view/widgets/name.dart';
-import 'package:book_store/features/profile_screen/view/widgets/phone.dart';
-import 'package:book_store/features/profile_screen/view/widgets/sectionOfProfileLogo.dart';
+import 'package:book_store/features/profile_screen/view/widgets/show_profile/city.dart';
+import 'package:book_store/features/profile_screen/view/widgets/show_profile/container_of_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../view_model/cubits/profile_cubit/profile_cubit.dart';
-import '../widgets/address.dart';
+import '../widgets/show_profile/address.dart';
+import '../widgets/show_profile/edit_profile_button.dart';
+import '../widgets/show_profile/email.dart';
+import '../widgets/show_profile/name.dart';
+import '../widgets/show_profile/phone.dart';
+import '../widgets/show_profile/sectionOfProfileLogo.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

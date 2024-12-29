@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/components/widgets/text_form_field_custom.dart';
-import '../../../../core/utils/colors.dart';
-import '../../view_model/cubits/profile_cubit/profile_cubit.dart';
-import '../../view_model/cubits/profile_cubit/profile_state.dart';
+import '../../../../../core/components/widgets/text_form_field_custom.dart';
+import '../../../../../core/utils/colors.dart';
+import '../../../view_model/cubits/profile_cubit/profile_cubit.dart';
+import '../../../view_model/cubits/profile_cubit/profile_state.dart';
 
-class Email extends StatelessWidget {
-  Email({super.key});
-  TextEditingController emailController = TextEditingController();
+class Address extends StatelessWidget {
+  const Address({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
@@ -16,17 +16,18 @@ class Email extends StatelessWidget {
         return CustomTextFormField(
           enabled: ProfileCubit.get(context).isEditing,
           border: OutlineInputBorder(
-              borderSide: BorderSide(width: 2.w, color: AppColors.primaryColor),
+              borderSide:
+                  const BorderSide(width: 2, color: AppColors.primaryColor),
               borderRadius: BorderRadius.circular(12.r)),
-          controller: ProfileCubit.get(context).emailController,
-          hintText: 'Email',
-          labelText: 'Email',
+          controller: ProfileCubit.get(context).addressController,
+          hintText: 'Address',
+          labelText: 'Address',
           hintTextStyle: const TextStyle(color: AppColors.primaryColor),
           labelTextStyle: const TextStyle(color: AppColors.primaryColor),
           textInputAction: TextInputAction.next,
           keyboardType: TextInputType.name,
           prefixIcon: const Icon(
-            Icons.email,
+            Icons.location_on,
             color: AppColors.primaryColor,
           ),
         );

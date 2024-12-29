@@ -1,11 +1,11 @@
 import 'package:book_store/core/utils/navigation.dart';
-import 'package:book_store/features/cart_screen/view/screen/checkout_screen.dart';
 import 'package:book_store/features/cart_screen/view_model/cubits/cart_cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/components/widgets/text_custom.dart';
 import '../../../../../core/utils/colors.dart';
+import '../../../../order_screen/view/screen/checkout_screen.dart';
 import '../../../view_model/cubits/cart_cubit/states.dart';
 
 class CheckoutSection extends StatelessWidget {

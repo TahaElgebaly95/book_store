@@ -1,9 +1,10 @@
-import 'package:book_store/features/order_screen/view/screen/order_history.dart';
+
 import 'package:flutter/material.dart';
 import '../../../../../core/components/widgets/text_custom.dart';
 import '../../../../../core/utils/colors.dart';
 import '../../../../../core/utils/navigation.dart';
-import '../../../../profile_screen/view/screen/profile_screen.dart';
+import '../../../../order_screen/view/screen/order_history.dart';
+import '../../../../profile_screen/view/screen/show_update_profile_screen.dart';
 
 class OrderAndEditButtons extends StatelessWidget {
   const OrderAndEditButtons({super.key});

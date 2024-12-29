@@ -1,10 +1,9 @@
 import 'package:book_store/core/utils/colors.dart';
-import 'package:book_store/features/auth_screen/view/components/logo_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../view_model/section_register/login_button.dart';
 import '../../../view_model/section_register/section_form_field.dart';
+import '../../widgets/login/logo_login.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
